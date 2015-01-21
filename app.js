@@ -7,11 +7,12 @@ app.controller('brreg', ['$scope', 'Enhetsregisteret',
     $scope.Search = function () {
       ereg.get({query:$scope.searchText}, function (data) {
         $scope.Resultat = data.entries;
+        $scope.Antall = data.posts;
         console.log(data);
       });
-    };
+    }; // End Search
 
-  }]);
+  }]); // End controller
 
 app.factory('Enhetsregisteret', ['$resource', 
   function ($resource){
