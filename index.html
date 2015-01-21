@@ -1,12 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
-<meta charset="UTF-8">
-<title>Getting info from brreg...</title>
+  <meta charset="UTF-8">
+  <title>Getting info from brreg...</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular-resource.min.js"></script>
+  <script src="app.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css" rel="stylesheet">
 </head>
 
-<body>
-This is my site
+<body ng-controller="brreg">
+  <div class="container">
+    <div class="row">
+  <form ng-submit="Search()">
+    <div class="col-xs-8">
+    <input class="form-control" type="text" ng-model="searchText">
+  </div>
+  <div class="col-xs-4">
+    <input class="btn btn-primary" type="submit" value="Search">
+    </div>
+  </form>
+  <table class="table">
+    <tr>
+      <th>Org.Nr</th>
+      <th>FirmaNavn</th>
+      <th>Adresse</th>
+      <th>PostNr</th>
+      <th>Ant.Ansatte</th>
+    </tr>
+    <tr ng-repeat="r in Resultat | orderBy:predicate:reverse">
+      <td>{{ r.orgnr }}</td>
+      <td>{{ r.navn }}</td>
+      <td>{{ r.forretningsadr }}</td>
+      <td>{{ r.forradrpostnr }}</td>
+      <td>{{ r.ansatte_antall }}</td>
+    </tr>
+  </table>
+
+  <nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+    
+  </div>
+</div>
+</div>
 </body>
 
 </html>
